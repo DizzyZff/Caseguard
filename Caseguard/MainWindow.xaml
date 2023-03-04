@@ -6,35 +6,38 @@
         xmlns:local="clr-namespace:Caseguard"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <!-- 1. Select and load an image.
+    <!-- 1. Select and load an image.
          2. Draw one rectangle or more over the image by clicking and dragging the
     mouse to draw (the size of the rectangle depends on how much the userdrags the mouse)
          3. Only allow drawing inside the picture.
          4. Change the rectangle's color by clicking each rectangle and selecting a
-    different color from a color palette.
+    different color from a color palette.    
          5. Resize the rectangle(s) from any corner or side.
          6. Move the rectangle by pressing and holding the rectangle and moving the
     mouse (drag and drop).
          7. Delete any rectangle.
          8. Save the changes to a new image. -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <Button Grid.Row="0" Grid.Column="0" Content="Load Image"/>
-        <Button Grid.Row="0" Grid.Column="2" Content="Save Image"/>
-        <Image Grid.Row="1" Grid.Column="1" Source="C:\Users\Public\Pictures\Sample Pictures\Desert.jpg"/>
-        <Button Grid.Row="2" Grid.Column="0" Content="Rectangle"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Color"/>
-        <Button Grid.Row="2" Grid.Column="2" Content="Resize"/>
-        <Button Grid.Row="2" Grid.Column="3" Content="Move"/>
-        <Canvas Grid.Row="1" Grid.Column="1" Background="Transparent"/>
-    </Grid>
+    <!-- Microsoft paint layout -->
+     <Grid>
+          <Grid.RowDefinitions>
+               <RowDefinition Height="Auto"/>
+               <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+          <!-- Toolbar -->
+          <StackPanel Orientation="Horizontal">
+               <Button x:Name="btnNew" Content="New"/>
+               <Button x:Name="btnOpen" Content="Open"/>
+               <Button x:Name="btnSave" Content="Save"/>
+               <Separator/>
+               <Button x:Name="btnRectangle" Content="Rectangle"/>
+               <Separator/>
+               <local:ColorPicker x:Name="colorPicker"/>
+          </StackPanel>
+          
+          <!-- Canvas Over Image -->
+          <Canvas Grid.Row="1" x:Name="canvas" Background="Transparent">
+               <Image x:Name="image" Source="src/" Stretch="None"/>
+          </Canvas>
+     </Grid>
+          
 </Window>
